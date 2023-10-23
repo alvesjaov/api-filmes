@@ -1,9 +1,9 @@
 import { Link } from "react-router-dom";
 import { FaStar } from 'react-icons/fa';
+import PropTypes from 'prop-types';
 
 const imageUrl = import.meta.env.VITE_IMG;
 
-import PropTypes from 'prop-types';
 
 const MoviesCard = ({ movie, showLink = true }) => {
     return (
