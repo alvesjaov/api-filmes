@@ -10,6 +10,7 @@
 
 .title .query-text {
     color: #E50914;
+    text-transform: none;
 }
 
 .movies-container {
