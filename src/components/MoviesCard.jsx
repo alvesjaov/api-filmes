@@ -11,7 +11,7 @@ const MoviesCard = ({ movie, showLink = true }) => {
             <img src={imageUrl + movie.poster_path} alt={movie.title} />
             <h2>{movie.title}</h2>
             <p>
-                <FaStar /> {movie.vote_average}
+                <FaStar /> {movie.vote_average.toFixed(1)}
             </p>
             {showLink && <Link to={`/movie/${movie.id}`}>Ver detalhes</Link>}
         </div>
