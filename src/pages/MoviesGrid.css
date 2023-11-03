@@ -32,6 +32,7 @@
     justify-content: space-between;
     background-color: #111111;
     padding: 1rem;
+    border-radius: 14px;
 }
 
 .movies-container div img {
@@ -67,4 +68,8 @@
 .movies-container div a:hover {
     background-color: transparent;
     color: #E50914;
+}
+
+img{
+    border-radius: 10px;
 }
