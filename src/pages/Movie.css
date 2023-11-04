@@ -5,7 +5,11 @@
     max-width: 600px;
     margin: 2rem auto;
 }
-
+.movie-page .movie-card img{
+    width: 65%;
+    margin-bottom: 1.5rem;
+    
+}
 .movie-page svg {
     font-size: 1.5rem;
     color: #E50914;
@@ -44,7 +48,7 @@
 }
 
 .info h3 {
-    margin-bottom: 1rem;
+    margin: 1rem 0;
     display: flex;
     align-items: center;
     gap: 0.5rem;
@@ -53,4 +57,26 @@
 
 .description p {
     line-height: 1.4rem;
+}
+
+@media (max-width: 768px) {
+    .movie-page {
+        margin: 1rem auto;
+    }
+
+    .movie-page .movie-card h2 {
+        font-size: 2rem;
+    }
+
+    .tagline {
+        font-size: 1.2rem;
+    }
+
+    .info h3 {
+        font-size: 1.2rem;
+    }
+
+    .info{
+        margin: 0 1.5rem;
+    }
 }

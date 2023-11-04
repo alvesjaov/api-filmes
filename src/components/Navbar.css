@@ -18,6 +18,11 @@
     margin-bottom: 2rem;
 }
 
+.bibi-stars {
+    width: 3rem;
+    height: 3rem;
+}
+
 #navbar form {
     display: flex;
     gap: 0.5rem;
@@ -51,5 +56,28 @@
 
 #navbar form button:hover {
     background-color: transparent;
-    color: #E50914;
+    color: #d50914;
+}
+
+@media (max-width: 768px) {
+   
+    #navbar h2 a {
+        font-size: 3.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .bibi-stars {
+        width: 2rem;
+        height: 2rem;
+    }
+
+    #navbar input {
+        padding: .3rem;
+        width: 100%;
+    }
+
+    #navbar form button {
+        width: 10%;
+        font-size: 1rem;
+    }
 }
