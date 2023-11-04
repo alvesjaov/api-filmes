@@ -32,10 +32,13 @@ const Search = () => {
   };
 
   useEffect(() => {
+    setMovies([]);
+  }, [query]);
+
+  useEffect(() => {
     const searchWithQueryURL = `${searchURL}?${apiKey}&query=${query}&page=${page}`;
     getSearchedMovies(searchWithQueryURL);
   }, [query, page]);
-  
 
   const loadMoreMovies = () => {
     setPage(oldPage => oldPage + 1);
@@ -43,16 +46,16 @@ const Search = () => {
 
   return (
     <div className="container">
-        <div className="content">
-      <h2 className="title">
-        Resultados para: <span className="query-text">{query}</span>
-      </h2>
-      <div className="movies-container">
-        {movies.length > 0 &&
-          movies.map((movie) => <MoviesCard key={movie.id} movie={movie} />)}
+      <div className="content">
+        <h2 className="title">
+          Resultados para: <span className="query-text">{query}</span>
+        </h2>
+        <div className="movies-container">
+          {movies.length > 0 &&
+            movies.map((movie) => <MoviesCard key={movie.id} movie={movie} />)}
+        </div>
+        {movies.length > 0 && <button onClick={loadMoreMovies}>Carregar mais</button>}
       </div>
-      {movies.length > 0 && <button onClick={loadMoreMovies}>Carregar mais</button>}
-    </div>
     </div>
   )
 }
