@@ -24,6 +24,7 @@
     outline: none;
     width: 20rem;
     font-size: larger;
+    cursor: pointer;
 }
 
 .title .query-text {
@@ -102,10 +103,36 @@ img {
     border: none;
     outline: none;
     color: #ffffff;
-    border-radius: 15px;
     text-align: center;
     transition: 0.5s;
     font-weight: 500;
-    font-size: 1.5rem;
-    margin-bottom: 3rem;
+    font-size: 2rem;
+    width: 100%;
+    background-color: #111111;
+    padding: 2rem 0 2rem;
+    margin: 1rem 0 0;
+    cursor: pointer;
+    text-transform: uppercase;
+}
+
+@media (max-width: 768px) {
+    .container .title {
+        margin-bottom: 1rem;
+    }
+
+    .container select {
+        width: 100%;
+    }
+
+    .movies-container {
+        flex-direction: row;
+    }
+
+    .movies-container div {
+        width: 100%;
+        margin: .5rem 0;
+    }
+    .container button {
+        font-size: 1.5rem;
+    }
 }
