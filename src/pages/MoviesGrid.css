@@ -118,7 +118,7 @@ img {
 
 @media (max-width: 768px) {
     .container .title {
-        margin-bottom: 1rem;
+        margin: 1rem 2rem;
     }
 
     .container select {
