@@ -32,10 +32,10 @@ const Search = () => {
   };
 
   useEffect(() => {
-    setMovies([]); // Limpa o estado dos filmes
     const searchWithQueryURL = `${searchURL}?${apiKey}&query=${query}&page=${page}`;
     getSearchedMovies(searchWithQueryURL);
   }, [query, page]);
+  
 
   const loadMoreMovies = () => {
     setPage(oldPage => oldPage + 1);
