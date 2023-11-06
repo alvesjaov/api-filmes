@@ -5,6 +5,7 @@ import {BiDownArrow}  from 'react-icons/bi';
 
 const searchURL = import.meta.env.VITE_SEARCH;
 const apiKey = import.meta.env.VITE_API_KEY;
+const language = import.meta.env.VITE_LANG;
 
 import './MoviesGrid.css';
 
@@ -13,6 +14,7 @@ const Search = () => {
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
+  const [singleMovie, setSingleMovie] = useState(false);
   const query = searchParams.get("q");
 
   const getSearchedMovies = async (url) => {
@@ -43,10 +45,14 @@ const Search = () => {
 
   useEffect(() => {
     if (searchTerm) {
-      const searchWithQueryURL = `${searchURL}?${apiKey}&query=${searchTerm}&page=${page}`;
+      const searchWithQueryURL = `${searchURL}?${apiKey}&query=${searchTerm}&language=${language}&page=${page}`;
       getSearchedMovies(searchWithQueryURL);
     }
   }, [searchTerm, page]);
+
+  useEffect(() => {
+    setSingleMovie(movies.length === 1);
+  }, [movies]);
 
   const loadMoreMovies = () => {
     setPage(oldPage => oldPage + 1);
@@ -58,7 +64,7 @@ const Search = () => {
         <h2 className="title">
           Resultados para: <span className="query-text">{query}</span>
         </h2>
-        <div className="movies-container">
+        <div className={`movies-container ${singleMovie ? 'single-movie' : ''}`}>
           {movies.length > 0 &&
             movies.map((movie) => <MoviesCard key={movie.id} movie={movie} />)}
         </div>

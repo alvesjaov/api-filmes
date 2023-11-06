@@ -7,6 +7,7 @@ import './MoviesGrid.css';
 const apiKey = import.meta.env.VITE_API_KEY;
 const moviesURL = import.meta.env.VITE_API;
 const genreURL = import.meta.env.VITE_GENRE;
+const language = import.meta.env.VITE_LANG;
 
 const Home = () => {
   const [movies, setMovies] = useState([]);
@@ -55,8 +56,8 @@ const Home = () => {
   
 
   useEffect(() => {
-    const url = genre === 'top_rated' ? `${moviesURL}top_rated?${apiKey}&page=${page}` : `${genreURL}?${apiKey}&with_genres=${genre}&page=${page}`;
-
+    const url = genre === 'top_rated' ? `${moviesURL}top_rated?${apiKey}&language=${language}&page=${page}` : `${genreURL}?${apiKey}&with_genres=${genre}&language=${language}&page=${page}`;
+  
     getMovies(url);
   }, [genre, page]);
 
