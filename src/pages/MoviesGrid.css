@@ -121,7 +121,6 @@ img {
 
 .container button svg {
     font-size: 1.5rem;
-    margin-top: .5rem;
 }
 
 @media (max-width: 768px) {
@@ -149,6 +148,5 @@ img {
 
     .container button svg {
         font-size: 1.1rem;
-        margin-top: 0;
     }
 }
