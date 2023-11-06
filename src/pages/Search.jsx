@@ -11,6 +11,7 @@ const Search = () => {
   const [searchParams] = useSearchParams();
   const [movies, setMovies] = useState([]);
   const [page, setPage] = useState(1);
+  const [searchTerm, setSearchTerm] = useState("");
   const query = searchParams.get("q");
 
   const getSearchedMovies = async (url) => {
@@ -32,13 +33,19 @@ const Search = () => {
   };
 
   useEffect(() => {
-    setMovies([]);
-  }, [query]);
+    if (query !== searchTerm) {
+      setMovies([]);
+      setPage(1);
+      setSearchTerm(query);
+    }
+  }, [query, searchTerm]);
 
   useEffect(() => {
-    const searchWithQueryURL = `${searchURL}?${apiKey}&query=${query}&page=${page}`;
-    getSearchedMovies(searchWithQueryURL);
-  }, [query, page]);
+    if (searchTerm) {
+      const searchWithQueryURL = `${searchURL}?${apiKey}&query=${searchTerm}&page=${page}`;
+      getSearchedMovies(searchWithQueryURL);
+    }
+  }, [searchTerm, page]);
 
   const loadMoreMovies = () => {
     setPage(oldPage => oldPage + 1);
