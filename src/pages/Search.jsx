@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
 import MoviesCard from "../components/MoviesCard";
+import {BiDownArrow}  from 'react-icons/bi';
 
 const searchURL = import.meta.env.VITE_SEARCH;
 const apiKey = import.meta.env.VITE_API_KEY;
@@ -61,7 +62,7 @@ const Search = () => {
           {movies.length > 0 &&
             movies.map((movie) => <MoviesCard key={movie.id} movie={movie} />)}
         </div>
-        {movies.length > 0 && <button onClick={loadMoreMovies}>Carregar mais</button>}
+        {movies.length > 0 && <button onClick={loadMoreMovies}>Carregar mais<BiDownArrow/></button>}
       </div>
     </div>
   )

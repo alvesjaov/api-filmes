@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import MoviesCard from '../components/MoviesCard';
+import {BiDownArrow}  from 'react-icons/bi';
 
 import './MoviesGrid.css';
 
@@ -93,7 +94,7 @@ const Home = () => {
           {movies.length === 0 && <p>Carregando...</p>}
           {movies.length > 0 && movies.map((movie) => <MoviesCard key={movie.id} movie={movie} />)}
         </div>
-        {movies.length > 0 && <button onClick={loadMoreMovies}>Carregar mais</button>}
+        {movies.length > 0 && <button onClick={loadMoreMovies}>Carregar mais<BiDownArrow/></button>}
       </div>
     </div>
   );
