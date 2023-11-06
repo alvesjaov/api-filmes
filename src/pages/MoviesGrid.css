@@ -84,6 +84,7 @@ img {
     border-radius: 4px;
     text-align: center;
     transition: 0.5s;
+    font-size: 1.2rem;
 }
 
 .movies-container div a:hover {
@@ -106,8 +107,8 @@ img {
     text-align: center;
     transition: 0.5s;
     font-weight: 500;
-    font-size: 2rem;
-    width: 50%;
+    font-size: 1.6rem;
+    width: 35%;
     background-color: #E50914;
     padding: .6rem;
     margin: 1rem 0 2rem;
@@ -134,6 +135,6 @@ img {
         margin: .5rem 0;
     }
     .container button {
-        font-size: 1.5rem;
+        font-size: 1.2rem;
     }
 }
