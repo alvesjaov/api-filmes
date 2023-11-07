@@ -68,7 +68,7 @@ const Search = () => {
           {movies.length > 0 &&
             movies.map((movie) => <MoviesCard key={movie.id} movie={movie} />)}
         </div>
-        {movies.length > 0 && <button onClick={loadMoreMovies}>Carregar mais<BiDownArrow/></button>}
+        {movies.length > 0 && <button type='button' title='carregar' onClick={loadMoreMovies}>Carregar mais<BiDownArrow/></button>}
       </div>
     </div>
   )
