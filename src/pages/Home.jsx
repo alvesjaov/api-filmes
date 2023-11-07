@@ -75,13 +75,14 @@ const Home = () => {
 
 
   return (
-    <div className="container">
-      <div className="content">
-        <div className="title-container">
+    <div className='container'>
+      <div className='content'>
+        <div className='title-container'>
           <select
-            name="genre"
+            name='genre'
             value={genre}
             onChange={(e) => handleGenreChange(e.target.value)}
+            title='Selecione um gênero'
           >
             {Object.entries(genreNames).map(([value, name]) => (
               <option key={value} value={value}>
@@ -90,12 +91,12 @@ const Home = () => {
             ))}
           </select>
         </div>
-        <h2 className="title">{genreNames[genre]}</h2>
-        <div className="movies-container">
+        <h2 className='title'>{genreNames[genre]}</h2>
+        <div className='movies-container'>
           {movies.length === 0 && <p>Carregando...</p>}
           {movies.length > 0 && movies.map((movie) => <MoviesCard key={movie.id} movie={movie} />)}
         </div>
-        {movies.length > 0 && <button onClick={loadMoreMovies}>Carregar mais<BiDownArrow/></button>}
+        {movies.length > 0 && <button type='button' title='carregar' onClick={loadMoreMovies}>Carregar mais<BiDownArrow/></button>}
       </div>
     </div>
   );
