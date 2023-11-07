@@ -5,8 +5,10 @@ import {
   BsWallet2,
   BsHourglassSplit,
   BsFillFileEarmarkTextFill,
-  BsPlayFill
+  BsPlayFill,
+  BsCalendar
 } from "react-icons/bs";
+import { FaStar } from "react-icons/fa";
 
 import MoviesCard from "../components/MoviesCard";
 
@@ -43,6 +45,11 @@ const Movie = () => {
     });
   };
 
+  const formatDate = (dateString) => {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+    return new Date(dateString).toLocaleDateString('pt-BR', options);
+  };
+
   useEffect(() => {
     const movieUrl = `${moviesURL}${id}?${apiKey}&language=${language}`;
     getMovie(movieUrl);
@@ -55,51 +62,52 @@ const Movie = () => {
     <div className="movie-page">
       {movie && (
         <>
-          <MoviesCard movie={movie} showLink={false} />
-          <p className="tagline">{movie.tagline}</p>
-          <div className="info">
-            <h3>
-              <BsWallet2 /> Orçamento:
-            </h3>
-            <p>{formatCurrency(movie.budget)}</p>
-          </div>
-          <div className="info">
-            <h3>
-              <BsGraphUp /> Receita:
-            </h3>
-            <p>{formatCurrency(movie.revenue)}</p>
-          </div>
-          <div className="info">
-            <h3>
-              <BsHourglassSplit /> Duração:
-            </h3>
-            <p>{movie.runtime} minutos</p>
+          <div className="movie-header">
+            <MoviesCard movie={movie} showLink={false} />
+            <div className="movie-details">
+              <p className="vote"> <FaStar /> {movie.vote_average.toFixed(1)} </p>
+              <p className="tagline">{movie.tagline}</p>
+              <div className="info">
+                <h3> <BsCalendar /> Data de Lançamento:</h3>
+                <p>{formatDate(movie.release_date)}</p>
+              </div>
+              <div className="info">
+                <h3><BsWallet2 /> Orçamento:</h3>
+                <p>{formatCurrency(movie.budget)}</p>
+              </div>
+              <div className="info">
+                <h3><BsGraphUp /> Receita:</h3>
+                <p>{formatCurrency(movie.revenue)}</p>
+              </div>
+              <div className="info">
+                <h3><BsHourglassSplit /> Duração:</h3>
+                <p>{movie.runtime} minutos</p>
+              </div>
+            </div>
           </div>
           <div className="info description">
-            <h3>
-              <BsFillFileEarmarkTextFill /> Descrição:
-            </h3>
+            <h3><BsFillFileEarmarkTextFill /> Descrição:</h3>
             <p>{movie.overview}</p>
           </div>
           <div className="info">
-            <h3>
-              <BsPlayFill /> Onde assistir:
-            </h3>
-          </div>
-          <div className="info-provider">
-          {providers?.results?.BR?.flatrate?.map((provider) => (
-            <div  key={provider.provider_id}>
-                <img
-                  src={`${logo}${provider.logo_path}`}
-                  alt={provider.provider_name}
-                  className="logo"
-                />
+            <h3><BsPlayFill /> Onde assistir:</h3>
+            <div className="info-provider">
+              {providers?.results?.BR?.flatrate?.map((provider) => (
+                <div key={provider.provider_id}>
+                  <img
+                    src={`${logo}${provider.logo_path}`}
+                    alt={provider.provider_name}
+                    className="logo"
+                    title={provider.provider_name}
+                  />
+                </div>
+              )) || "Sem provedores disponíveis."}
             </div>
-          )) || "Sem provedores disponíveis."}
           </div>
         </>
       )}
     </div>
   );
-}
+};
+
 export default Movie;
