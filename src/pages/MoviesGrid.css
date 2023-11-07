@@ -20,8 +20,7 @@
     color: #ffffff;
     border: 1px solid #ffffff;
     border-radius: 10px;
-    padding: .6rem;
-    outline: none;
+    padding: 1rem;
     width: 20rem;
     font-size: larger;
     cursor: pointer;
@@ -35,7 +34,7 @@
 .movies-container {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-evenly;
+    justify-content: space-around;
     padding: 2rem;
     margin: 1rem;
 }
@@ -58,6 +57,14 @@
 
 .movies-container div img {
     max-width: 100%;
+}
+
+.no-events {
+    pointer-events: none;
+    -webkit-user-select: none; /* Para suporte ao Safari e iOS */
+    -moz-user-select: none; /* Para suporte ao Firefox */
+    -ms-user-select: none; /* Para suporte ao Internet Explorer/Edge */
+    user-select: none; /* Desativa a seleção de texto */
 }
 
 .movies-container div img,
@@ -89,9 +96,11 @@ img {
     text-align: center;
     transition: 0.5s;
     font-size: 1.2rem;
+    outline: none;
 }
 
-.movies-container div a:hover {
+.movies-container div a:hover,
+.movies-container div a:focus {
     background-color: transparent;
     color: #E50914;
 }
@@ -109,7 +118,7 @@ img {
     outline: none;
     color: #ffffff;
     transition: 0.5s;
-    font-weight: 500;
+    font-weight: 700;
     font-size: 1.6rem;
     width: 20%;
     padding: 1rem .6rem .6rem;
@@ -126,7 +135,12 @@ img {
     font-size: 1.5rem;
 }
 
-.info-provider{
+.container button:hover,
+.container button:focus {
+    color: #E50914;
+}
+
+.info-provider {
     display: flex;
     flex-direction: row;
     align-items: center;
