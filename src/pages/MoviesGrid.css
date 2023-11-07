@@ -112,7 +112,6 @@ img {
     font-weight: 500;
     font-size: 1.6rem;
     width: 20%;
-    background-color: #E50914;
     padding: 1rem .6rem .6rem;
     margin: 1rem 0 2rem;
     cursor: pointer;
@@ -127,9 +126,11 @@ img {
     font-size: 1.5rem;
 }
 
-.movie-page .logo {
-    width: 3rem;
-    margin: 1rem .5rem 1rem;
+.info-provider{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
 }
 
 @media (max-width: 768px) {
