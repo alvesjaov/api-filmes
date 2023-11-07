@@ -81,21 +81,22 @@ const Movie = () => {
             </h3>
             <p>{movie.overview}</p>
           </div>
-          {providers && providers.results.BR && (
-            <div className="info">
-              <h3>
-                <BsPlayFill /> Onde assistir:
-              </h3>
-              {providers?.results?.BR?.flatrate?.map((provider, index) => {
-                const logoPath = provider.logo_path;
-                const logoUrl = `${logo}${logoPath}`;
-                return (
-                  <img key={index} className="logo" src={logoUrl} alt="Logo do provedor"
-                    title={provider.provider_name} />
-                );
-              }) || 'Sem provedores disponíveis.'}
+          <div className="info">
+            <h3>
+              <BsPlayFill /> Onde assistir:
+            </h3>
+          </div>
+          <div className="info-provider">
+          {providers?.results?.BR?.flatrate?.map((provider) => (
+            <div  key={provider.provider_id}>
+                <img
+                  src={`${logo}${provider.logo_path}`}
+                  alt={provider.provider_name}
+                  className="logo"
+                />
             </div>
-          )}
+          )) || "Sem provedores disponíveis."}
+          </div>
         </>
       )}
     </div>
