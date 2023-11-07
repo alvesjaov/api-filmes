@@ -1,50 +1,72 @@
 .movie-page {
     color: #ffffff;
-    display: grid;
+    display: flex;
     flex-direction: column;
     max-width: 600px;
     margin: 2rem auto;
 }
-.movie-page .movie-card img{
-    width: 65%;
-    margin-bottom: 1.5rem;
-    
-}
-.movie-page svg {
-    font-size: 1.5rem;
-    color: #E50914;
+
+.movie-header {
+    display: flex;
+    align-items: flex-start;
 }
 
 .movie-page .movie-card {
+    width: -moz-fit-content;
+    /* Para suporte ao Firefox */
+    width: fit-content;
+    margin-right: 2rem;
     text-align: center;
+    margin-bottom: 2rem;
 }
 
-.movie-page .movie-card img,
-.movie-page .movie-card h2,
-.movie-page .movie-card p {
+.movie-page div .movie-card h2 {
+    font-size: 2rem;
+}
+
+.movie-page .movie-card img {
+    height: auto;
+    max-height: 500px;
+    object-fit: cover;
     margin-bottom: 1rem;
 }
 
-.movie-page .movie-card h2 {
-    font-size: 3rem;
-}
-
 .movie-page .movie-card p {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.4rem;
+    width: 100%;
+    text-align: center;
 }
 
-.tagline {
+.vote {
     text-align: center;
-    font-size: 1.5rem;
-    margin-bottom: 2rem;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.movie-details {
+    display: flex;
+    flex-direction: column;
 }
 
 .info {
     margin-bottom: .5rem;
     font-size: 1.2rem;
+}
+
+.logo {
+    width: 50px;
+    height: auto;
+    margin-right: 10px;
+}
+
+.movie-page svg {
+    font-size: 1.5rem;
+    color: #E50914;
+}
+
+.tagline {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
 }
 
 .info h3 {
@@ -55,7 +77,6 @@
     font-size: 1.5rem;
 }
 
-
 .description p {
     line-height: 1.4rem;
 }
@@ -65,24 +86,29 @@
     margin: 0 1rem 1rem 0;
 }
 
-@media (max-width: 768px) {
+@media screen and (max-width: 768px) {
     .movie-page {
-        margin: 1rem auto;
+        margin: 2rem 1.5rem;
     }
 
-    .movie-page .movie-card h2 {
-        font-size: 2rem;
+    .movie-header {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
     }
 
-    .tagline {
-        font-size: 1.2rem;
+    .movie-header .movie-card {
+        align-items: center;
+        margin: 0 auto;
     }
 
-    .info h3 {
-        font-size: 1.2rem;
+    .movie-page .movie-card img {
+        width: 100%;
+        margin: 2rem 1rem;
     }
 
-    .info{
-        margin: 0 1.5rem;
+    .info-provider {
+        display: flex;
+        flex-wrap: wrap;
     }
 }
