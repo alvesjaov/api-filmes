@@ -70,7 +70,7 @@ function Navbar() {
                     </Link>
                 </h2>
                 <div className='form-container'>
-                    <form className='on-submit' onSubmit={handleSubmit} ref={formRef}>
+                    <div className='on-submit' onSubmit={handleSubmit} ref={formRef}>
                         <div className="input-container">
                             <input type="text" placeholder="Pesquise um filme"
                                 onChange={handleChange}
@@ -88,7 +88,7 @@ function Navbar() {
                                 ))}
                             </select>
                         </div>
-                    </form>
+                    </div>
                     <div className='button'>
                         <button type="button" title='buscar' onClick={handleSubmit}>
                             <BiSearchAlt2 />

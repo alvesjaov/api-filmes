@@ -126,11 +126,12 @@
         height: 2.5rem;
     }
 
-    #navbar form {
+    .form-container {
         width: 100%;
     }
 
-    #navbar form button {
-        font-size: 1rem;
+    #navbar .on-submit select{
+        display: none;
     }
+
 }
