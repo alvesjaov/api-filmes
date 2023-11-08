@@ -19,7 +19,7 @@ const MoviesCard = ({ movie, showLink = true }) => {
                     <p>
                         <FaStar /> {movie.vote_average.toFixed(1)}
                     </p>
-                    <a href={`/movie/${movie.id}`} target="_blank" rel="noopener noreferrer">Ver detalhes</a>
+                    <a href={window.location.origin + `/movie/${movie.id}`} target="_blank" rel="noopener noreferrer">Ver detalhes</a>
                 </>
             )}
         </div>
