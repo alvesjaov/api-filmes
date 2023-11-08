@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { BiSearchAlt2 } from 'react-icons/bi';
-import logo from '../assets/img/Stars.svg';
+import Stars from '../assets/img/Stars.svg';
 
 import './Navbar.css';
 
@@ -54,7 +54,7 @@ function Navbar() {
             <nav id="navbar">
                 <h2>
                     <Link to="/">
-                        <img src={logo} alt="Logo" className='bibi-stars' />Space+
+                        <img src={Stars} alt="Logo" className='bibi-stars' />Space+
                     </Link>
                 </h2>
 
