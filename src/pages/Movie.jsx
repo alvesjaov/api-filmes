@@ -65,8 +65,10 @@ const Movie = () => {
           <div className="movie-header">
             <MoviesCard movie={movie} showLink={false} />
             <div className="movie-details">
-              <p className="vote"> <FaStar /> {movie.vote_average.toFixed(1)} </p>
               <p className="tagline">{movie.tagline}</p>
+              <div className="movie-rating">
+                <p className="vote"> <FaStar /> {movie.vote_average.toFixed(1)} </p>
+              </div>
               <div className="info">
                 <h3> <BsCalendar /> Data de Lançamento:</h3>
                 <p>{formatDate(movie.release_date)}</p>
