@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { BiSearchAlt2 } from 'react-icons/bi';
-import Stars from '../assets/img/Stars.svg';
+import Stars from '../../assets/img/Stars.svg';
 
 import './Navbar.css';
 

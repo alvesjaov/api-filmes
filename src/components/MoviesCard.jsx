@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom";
 import { FaStar } from 'react-icons/fa';
 import PropTypes from 'prop-types';
-import defaultImage from '../assets/img/Placeholder.svg'; // Importa a imagem padrão
+import defaultImage from '../../assets/img/Placeholder.svg'; // Importa a imagem padrão
 
 const imageUrl = import.meta.env.VITE_IMG;
 const notImg = defaultImage;
