@@ -1,4 +1,3 @@
-import { Link } from "react-router-dom";
 import { FaStar } from 'react-icons/fa';
 import PropTypes from 'prop-types';
 import defaultImage from '../../assets/img/Placeholder.svg'; // Importa a imagem padrão
@@ -20,7 +19,7 @@ const MoviesCard = ({ movie, showLink = true }) => {
                     <p>
                         <FaStar /> {movie.vote_average.toFixed(1)}
                     </p>
-                    <Link to={`/movie/${movie.id}`}>Ver detalhes</Link>
+                    <a href={`/movie/${movie.id}`} target="_blank" rel="noopener noreferrer">Ver detalhes</a>
                 </>
             )}
         </div>

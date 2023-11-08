@@ -39,6 +39,7 @@
     width: 100%;
 }
 
+
 .vote {
     text-align: center;
     font-size: 1rem;
@@ -62,8 +63,7 @@
 }
 
 .tagline {
-    width: -moz-fit-content;
-    width: fit-content;
+   width: 100%;
     text-align: center;
     font-size: 1.5rem;
     margin-bottom: 1rem;
