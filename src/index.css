@@ -38,3 +38,18 @@ body::-webkit-scrollbar-thumb {
     /* cria padding em torno do botão de rolagem*/
     height: 4px;
 }
+
+select::-webkit-scrollbar {
+    width: 5px;
+}
+
+select::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+select::-webkit-scrollbar-thumb {
+    background-color: #8e8e8e;
+    border-radius: 20px;
+    border: 20px solid transparent;
+    height: 4px;
+}

@@ -23,53 +23,99 @@
     pointer-events: none;
 }
 
-#navbar form {
+.form-container {
     display: flex;
-    width: 60%;
+    justify-content: center;
+    align-items: stretch;
+    width: 70%;
+}
+
+#navbar .on-submit {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
     justify-content: center;
 }
 
-#navbar input {
-    padding: .6rem 1rem;
-    /* Ajuste o padding para ser menor */
+
+#navbar .on-submit .input-container,
+#navbar .on-submit .select-container {
+    width: 100%;
+}
+
+#navbar .on-submit input {
+    padding: .8rem 0;
     border: none;
-    border-radius: 4px;
     outline: none;
-    font-size: 1.1rem;
+    font-size: 1.2rem;
     color: #000000;
     text-align: center;
     width: 100%;
-    /* Faz com que o campo de entrada ocupe todo o espaço do formulário */
+    border-radius: 4px;
+    margin-bottom: .1rem
 }
 
 #navbar input::placeholder {
     color: #000000;
 }
 
+#navbar .on-submit select {
+    margin: 0 auto;
+    padding: .8rem 0;
+    border: none;
+    outline: none;
+    font-size: 1.2rem;
+    line-height: 1.2rem;
+    color: #000000;
+    background-color: #ffffff;
+    text-align: center;
+    width: 100%;
+    border-bottom-right-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
 
-#navbar form button {
-    padding: .3rem .4rem;
+#navbar select.hidden {
+    display: none;
+}
+
+#navbar .on-submit select.visible {
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+    max-height: 200px;
+    overflow: auto;
+}
+
+#navbar .on-submit select.hidden {
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    max-height: 0;
+    overflow: hidden;
+}
+
+
+#navbar .button button {
+    padding: .7rem;
     margin-left: 1rem;
     background-color: #E50914;
     color: #ffffff;
-    border: 2px solid #E50914;
+    border: 1px solid #E50914;
     border-radius: 4px;
     outline: none;
     cursor: pointer;
     display: flex;
     align-items: center;
     font-size: 1.3rem;
+    line-height: 1.3rem;
     transition: 0.5s;
 }
 
-#navbar form button:hover,
-#navbar form button:focus {
+#navbar .button button:hover,
+#navbar .button button:focus {
     background-color: transparent;
     color: #d50914;
 }
 
 @media (max-width: 768px) {
-
     #navbar h2 a {
         font-size: 5rem;
         margin-bottom: 2rem;
@@ -85,7 +131,6 @@
     }
 
     #navbar form button {
-        
         font-size: 1rem;
     }
 }

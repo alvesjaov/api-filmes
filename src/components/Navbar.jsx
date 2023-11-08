@@ -9,18 +9,19 @@ const apiKey = import.meta.env.VITE_API_KEY;
 const searchUrl = import.meta.env.VITE_SEARCH;
 const lang = import.meta.env.VITE_LANG;
 
-
 function Navbar() {
     const [search, setSearch] = useState('');
     const [results, setResults] = useState([]);
     const navigate = useNavigate();
     const inputRef = useRef();
+    const formRef = useRef();
+    const [showResults, setShowResults] = useState(false);
+
 
     const fetchMovies = async (query) => {
         if (!query) return;
         const response = await fetch(`${searchUrl}?${apiKey}&language=${lang}&query=${query}`);
         const data = await response.json();
-
         // Cria um objeto para armazenar os títulos dos filmes
         const titles = {};
 
@@ -38,6 +39,17 @@ function Navbar() {
     useEffect(() => {
         fetchMovies(search);
     }, [search]);
+
+    const handleChange = (e) => {
+        const input = e.target.value;
+        setSearch(input);
+        setShowResults(true);
+    };
+
+    const handleSuggestionClick = (suggestion) => {
+        setSearch(suggestion);
+        setShowResults(false);
+    };
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -57,25 +69,35 @@ function Navbar() {
                         <img src={Stars} alt="Logo" className='bibi-stars' />Space+
                     </Link>
                 </h2>
+                <div className='form-container'>
+                    <form className='on-submit' onSubmit={handleSubmit} ref={formRef}>
+                        <div className="input-container">
+                            <input type="text" placeholder="Pesquise um filme"
+                                onChange={handleChange}
+                                value={search}
+                                ref={inputRef}
+                                name="movieSearch"  /* Adicionado atributo name */
+                            />
+                        </div>
+                        <div className="select-container">
+                        <select className={search && showResults ? 'visible' : 'hidden'} size={results.length > 0 ? "5" : "1"}>
+                                {results.map((result) => (
+                                    <option key={result.id} onClick={() => handleSuggestionClick(result.title)}>
+                                        {result.title}
+                                    </option>
+                                ))}
+                            </select>
+                        </div>
+                    </form>
+                    <div className='button'>
+                        <button type="button" title='buscar' onClick={handleSubmit}>
+                            <BiSearchAlt2 />
+                        </button>
 
-                <form onSubmit={handleSubmit}>
-                    <input type="text" placeholder="Pesquise um filme" list="movie-titles"
-                        onChange={(e) => setSearch(e.target.value)}
-                        value={search}
-                        ref={inputRef}
-                        name="movieSearch"  /* Adicionado atributo name */
-                    />
-                    <datalist id="movie-titles">
-                        {results.map((result) => (
-                            <option key={result.id} value={result.title} />
-                        ))}
-                    </datalist>
-                    <button type="submit" title='buscar'>
-                        <BiSearchAlt2 />
-                    </button>
-                </form>
-            </nav>
-        </div>
+                    </div>
+                </div>
+            </nav >
+        </div >
     );
 }
 
