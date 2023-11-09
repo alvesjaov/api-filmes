@@ -101,7 +101,7 @@ const TVShow = () => {
                   <h3><BsInfoCircle /> Número de Temporadas:</h3>
                   <p>{numTemporadas} Temporadas</p>
                 </div>
-                <div className="info" style={{ display: displayStyle(tvShow.status) }}>
+                <div className="info">
                   <h3><BsInfoCircle /> Estaus da Serie:</h3>
                   <p>{traduzirStatus(tvShow.status)}</p>
                 </div>
