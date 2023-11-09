@@ -1,29 +1,33 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import MoviesCard from "../components/MoviesCard";
-import {BiDownArrow}  from 'react-icons/bi';
+import MoviesCard from "../components/ContentCard";
+import { BiDownArrow } from 'react-icons/bi';
 
-const searchURL = import.meta.env.VITE_SEARCH;
+const searchMovieURL = import.meta.env.VITE_SEARCH_MOVIE;
+const searchTvURL = import.meta.env.VITE_SEARCH_TV;
 const apiKey = import.meta.env.VITE_API_KEY;
 const language = import.meta.env.VITE_LANG;
 
-import './MoviesGrid.css';
+import './Content.css';
 
 const Search = () => {
   const [searchParams] = useSearchParams();
-  const [movies, setMovies] = useState([]);
+  const [content, setContent] = useState([]);
   const [page, setPage] = useState(1);
   const [searchTerm, setSearchTerm] = useState("");
-  const [singleMovie, setSingleMovie] = useState(false);
+  const [singleContent, setSingleContent] = useState(false);
+  const [contentType, setContentType] = useState('movie');
+  const [isLoading, setIsLoading] = useState(false); // Novo estado para controlar o carregamento
   const query = searchParams.get("q");
 
-  const getSearchedMovies = async (url) => {
+  const getSearchedContent = async (url, contentType) => {
+    setIsLoading(true); // Inicia o carregamento
     const res = await fetch(url);
     const data = await res.json();
 
-    setMovies(oldMovies => {
-      // Cria um novo conjunto de filmes, excluindo quaisquer duplicatas
-      const newMovies = [...oldMovies, ...data.results].reduce((acc, current) => {
+    setContent(oldContent => {
+      // Cria um novo conjunto de conteúdo, excluindo quaisquer duplicatas
+      const newContent = [...oldContent, ...data.results.map(item => ({ ...item, contentType }))].reduce((acc, current) => {
         const x = acc.find(item => item.id === current.id);
         if (!x) {
           return acc.concat([current]);
@@ -31,13 +35,14 @@ const Search = () => {
           return acc;
         }
       }, []);
-      return newMovies;
+      return newContent;
     });
+    setIsLoading(false); // Termina o carregamento
   };
 
   useEffect(() => {
     if (query !== searchTerm) {
-      setMovies([]);
+      setContent([]);
       setPage(1);
       setSearchTerm(query);
     }
@@ -45,33 +50,69 @@ const Search = () => {
 
   useEffect(() => {
     if (searchTerm) {
-      const searchWithQueryURL = `${searchURL}?${apiKey}&query=${searchTerm}&language=${language}&page=${page}`;
-      getSearchedMovies(searchWithQueryURL);
+      let url;
+      if (contentType === 'movie') {
+        url = `${searchMovieURL}?${apiKey}&query=${searchTerm}&language=${language}&page=${page}`;
+      } else {
+        url = `${searchTvURL}?${apiKey}&query=${searchTerm}&language=${language}&page=${page}`;
+      }
+      getSearchedContent(url, contentType);
     }
-  }, [searchTerm, page]);
+  }, [searchTerm, page, contentType]); // Adicione contentType às dependências do useEffect
 
   useEffect(() => {
-    setSingleMovie(movies.length === 1);
-  }, [movies]);
+    setSingleContent(content.length === 1);
+  }, [content]);
 
-  const loadMoreMovies = () => {
+  useEffect(() => {
+    if (query.toLowerCase().includes('filme')) {
+      setContentType('movie');
+    } else if (query.toLowerCase().includes('série')) {
+      setContentType('tv');
+    }
+  }, [query]);
+
+  const handleContentTypeChange = (newContentType) => {
+    if (newContentType !== contentType) {
+      setContentType(newContentType);
+      setContent([]);
+      setPage(1);
+    }
+  };
+
+  const loadMoreContent = () => {
     setPage(oldPage => oldPage + 1);
   };
+
+  let titleText = '';
+  if (isLoading) {
+    titleText = 'Buscando...';
+  } else if (content.length > 0) {
+    titleText = 'Resultados para: ';
+  } else {
+    titleText = 'Nenhum resultados para: ';
+  }
 
   return (
     <div className="container">
       <div className="content">
-        <h2 className="title">
-          Resultados para: <span className="query-text">{query}</span>
-        </h2>
-        <div className={`movies-container ${singleMovie ? 'single-movie' : ''}`}>
-          {movies.length > 0 &&
-            movies.map((movie) => <MoviesCard key={movie.id} movie={movie} />)}
+        <div className="toggle-search">
+          <button className={contentType === 'movie' ? 'active' : ''} onClick={() => handleContentTypeChange('movie')} style={contentType === 'movie' ? { color: '#E50914', background: 'transparent' } : {}}>Filmes</button>
+          <button className={contentType === 'tv' ? 'active' : ''} onClick={() => handleContentTypeChange('tv')} style={contentType === 'tv' ? { color: '#E50914', background: 'transparent' } : {}}>Séries</button>
         </div>
-        {movies.length > 0 && <button type='button' title='carregar' onClick={loadMoreMovies}>Carregar mais<BiDownArrow/></button>}
+        <h2 className="title">
+          {titleText}
+          {!isLoading && <span className="query-text">{query}</span>}
+        </h2>
+        <div className={`content-container ${singleContent ? 'single-content' : ''}`}>
+          {content.length > 0 &&
+            content.map((item) => <MoviesCard key={item.id} content={item} contentType={item.contentType} />)}
+        </div>
+        {content.length > 0 && <button type='button' title='carregar' onClick={loadMoreContent}>Carregar mais<BiDownArrow /></button>}
       </div>
     </div>
   )
+
 }
 
 export default Search
