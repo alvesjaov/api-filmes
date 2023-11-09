@@ -15,7 +15,8 @@ const Home = () => {
   const [content, setContent] = useState([]);
   const [genre, setGenre] = useState('top_rated');
   const [page, setPage] = useState(1);
-  const [contentType, setContentType] = useState('movie'); 
+  const [contentType, setContentType] = useState('movie');
+  const [isLoading, setIsLoading] = useState(false); // Novo estado para controlar o carregamento 
 
   const genres = useMemo(() => ({
     'movie': {
@@ -65,6 +66,8 @@ const Home = () => {
     const signal = controller.signal;
 
     const getContent = async (url, contentType) => {
+      setIsLoading(true); // Inicia o carregamento
+
       const res = await fetch(url, { signal });
       if (!signal.aborted) {
         const data = await res.json();
@@ -81,6 +84,7 @@ const Home = () => {
           }, []);
           return newContent;
         });
+        setIsLoading(false); // Termina o carregamento
       }
     }
 
@@ -114,7 +118,13 @@ const Home = () => {
   const loadMoreContent = () => {
     setPage(oldPage => oldPage + 1);
   };
-
+  let titleText = '';
+  if (isLoading) {
+    titleText = 'Carregando...';
+  } else if (content.length > 0) {
+    titleText = genres[contentType][genre];
+  }
+  
   return (
     <div className='container'>
       <div className='content'>
@@ -136,15 +146,16 @@ const Home = () => {
             ))}
           </select>
         </div>
-        <h2 className='title'>{genres[contentType][genre]}</h2>
+        <h2 className='title'>{titleText}</h2>
         <div className='content-container'>
-          {content.length === 0 && <p>Carregando Conteúdo...</p>}
           {content.length > 0 && content.map((item) => <ContentCard key={item.id} content={item} contentType={item.contentType} />)}
         </div>
         {content.length > 0 && <button type='button' title='carregar' onClick={loadMoreContent}>Carregar mais<BiDownArrow /></button>}
       </div>
     </div>
   );
-};
-
-export default Home;
+  
+  };
+  
+  export default Home;
+  
