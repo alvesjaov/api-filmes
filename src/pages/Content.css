@@ -1,7 +1,7 @@
 .container .title {
-    font-size: 2.9rem;
+    font-size: 3rem;
     font-weight: 700;
-    margin: 2rem 0 1rem;
+    margin-top: 1rem; 
     color: #fff;
     text-align: center;
     text-transform: uppercase;
@@ -10,9 +10,20 @@
 
 .title-container {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 1rem;
+    margin-bottom: 2rem;
+}
+
+.container .title-container .toggle,
+div.toggle-search{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: .6rem 0 .5rem 0;
+    gap: 1rem;
 }
 
 .container select {
@@ -20,10 +31,11 @@
     color: #ffffff;
     border: 1px solid #ffffff;
     border-radius: 10px;
-    padding: 1rem;
-    width: 20rem;
+    padding: .8rem;
+    width: 50vw;
     font-size: larger;
     cursor: pointer;
+    margin-top: .5rem;
 }
 
 .title .query-text {
@@ -31,7 +43,7 @@
     text-transform: none;
 }
 
-.movies-container {
+.content-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
@@ -39,7 +51,7 @@
     margin: 1rem;
 }
 
-.movies-container div {
+.content-container div {
     width: 22%;
     color: #ffffff;
     display: flex;
@@ -51,35 +63,39 @@
     border-radius: 14px;
 }
 
-.movies-container.single-movie div {
+.content-container.single-content div {
     width: 50%;
 }
 
-.movies-container div img {
+.content-container div img {
     max-width: 100%;
 }
 
 .no-events {
     pointer-events: none;
-    -webkit-user-select: none; /* Para suporte ao Safari e iOS */
-    -moz-user-select: none; /* Para suporte ao Firefox */
-    -ms-user-select: none; /* Para suporte ao Internet Explorer/Edge */
-    user-select: none; /* Desativa a seleção de texto */
+    -webkit-user-select: none;
+    /* Para suporte ao Safari e iOS */
+    -moz-user-select: none;
+    /* Para suporte ao Firefox */
+    -ms-user-select: none;
+    /* Para suporte ao Internet Explorer/Edge */
+    user-select: none;
+    /* Desativa a seleção de texto */
 }
 
-.movies-container div img,
-.movies-container div h2,
-.movies-container div p {
+.content-container div img,
+.content-container div h2,
+.content-container div p {
     margin-bottom: 1rem;
     text-align: center;
 }
 
-.movies-container div h2 {
+.content-container div h2 {
     font-size: 1.5rem;
     font-weight: 500;
 }
 
-.movies-container div svg {
+.content-container div svg {
     color: #E50914;
 }
 
@@ -87,7 +103,7 @@ img {
     border-radius: 10px;
 }
 
-.movies-container div a {
+.content-container div a {
     padding: .5rem;
     background-color: #E50914;
     color: #ffffff;
@@ -99,8 +115,8 @@ img {
     outline: none;
 }
 
-.movies-container div a:hover,
-.movies-container div a:focus {
+.content-container div a:hover,
+.content-container div a:focus {
     background-color: transparent;
     color: #E50914;
 }
@@ -112,20 +128,21 @@ img {
     justify-content: center;
 }
 
-.container button {
-    background-color: transparent;
-    border: none;
-    outline: none;
+.container button,
+.toggle-search button {
     color: #ffffff;
+    background-color: #E50914;
+    border: #E50914 2px solid;
+    outline: none;
     transition: 0.5s;
     font-weight: 700;
-    font-size: 1.6rem;
-    width: 20%;
-    padding: 1rem .6rem .6rem;
-    margin: 1rem 0 2rem;
+    font-size: 1.4rem;
+    width: 50%;
+    padding: .5rem 1.2rem;
+    margin-top: .5rem ;
     cursor: pointer;
     text-transform: uppercase;
-    border-radius: 20px;
+    border-radius: 18px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -138,6 +155,12 @@ img {
 .container button:hover,
 .container button:focus {
     color: #E50914;
+    background-color: transparent;
+}
+
+.container .toggle-search button:active{
+    color: #E50914;
+    background-color: transparent;
 }
 
 .info-provider {
@@ -152,28 +175,26 @@ img {
         margin: 1rem 2rem;
     }
 
+    .title-container {
+        width: 85%;
+    }
+
     .container select {
         width: 100%;
     }
 
-    .movies-container {
+    .content-container {
         flex-direction: row;
         width: 100%;
     }
 
-    .movies-container div {
+    .content-container div {
         width: 100%;
         margin: .5rem 0;
     }
 
-    .movies-container.single-movie div {
+    .content-container.single-content div {
         width: 100%;
-    }
-
-    .container button {
-        font-size: 1.2rem;
-        width: 50%;
-        padding: .5rem;
     }
 
     .container button svg {
