@@ -93,7 +93,7 @@ const Movie = () => {
               </div>
             </div>
             <div className="info description" style={{ display: displayStyle(movie.overview) }}>
-              <h3><BsFillFileEarmarkTextFill /> Descrição:</h3>
+              <h3><BsFillFileEarmarkTextFill /> Sinopse:</h3>
               <p>{movie.overview}</p>
             </div>
             <div className="info" style={{ display: displayStyle(providers?.results?.BR?.flatrate?.length) }}>
