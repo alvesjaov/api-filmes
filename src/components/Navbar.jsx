@@ -1,4 +1,4 @@
-import { useRef, useState } from 'react';
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { BiSearchAlt2 } from 'react-icons/bi';
 import Stars from '../../assets/img/Stars.svg';
@@ -8,8 +8,6 @@ import './Navbar.css';
 function Navbar() {
     const [search, setSearch] = useState('');
     const navigate = useNavigate();
-    const inputRef = useRef();
-    const formRef = useRef();
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -29,18 +27,17 @@ function Navbar() {
                     </Link>
                 </h2>
                 <div className='form-container'>
-                    <div className='on-submit' onSubmit={handleSubmit} ref={formRef}>
+                    <div className='on-submit' onSubmit={handleSubmit}>
                         <div className="input-container">
-                            <input type="text" placeholder="Pesquise um filme"
+                            <input type="text" placeholder="Pesquise um filme ou série"
                                 onChange={(e) => setSearch(e.target.value)}
                                 value={search}
-                                ref={inputRef}
                                 name="movieSearch"  
                             />
                         </div>
                     </div>
                     <div className='button'>
-                        <button type="button" title='buscar' onClick={handleSubmit}>
+                        <button type="submit" title='buscar' onClick={handleSubmit}>
                             <BiSearchAlt2 />
                         </button>
                     </div>
