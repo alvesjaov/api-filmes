@@ -8,15 +8,6 @@
     letter-spacing: 1px;
 }
 
-.content-container p{
-    font-size: 2rem;
-    font-weight: 400;
-    color: #fff;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-top: 4rem ;
-}
 
 .title-container {
     display: flex;
