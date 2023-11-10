@@ -20,7 +20,7 @@ const statusTraduzido = {
   'Ended': 'Finalizada',
   'In Production': 'Em Produção',
   'Canceled': 'Cancelada',
-  'Returning Series': 'Retornando',
+  'Returning Series': 'Renovada',
   'Planned': 'Planejado',
   'Pilot': 'Piloto',
   'Rumored': 'Rumor',
@@ -102,7 +102,7 @@ const TVShow = () => {
                   <p>{numTemporadas} Temporadas</p>
                 </div>
                 <div className="info">
-                  <h3><BsInfoCircle /> Estaus da Serie:</h3>
+                  <h3><BsInfoCircle /> Estatus da Serie:</h3>
                   <p>{traduzirStatus(tvShow.status)}</p>
                 </div>
               </div>
