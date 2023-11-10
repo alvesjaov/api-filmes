@@ -124,14 +124,14 @@ const Home = () => {
   } else if (content.length > 0) {
     titleText = genres[contentType][genre];
   }
-  
+
   return (
     <div className='container'>
       <div className='content'>
         <div className='title-container'>
           <div className="toggle">
-            <button className={contentType === 'movie' ? 'active' : ''} onClick={() => handleContentTypeChange('movie')} style={contentType === 'movie' ? { color: '#E50914', background: 'transparent' } : {}}>Filmes</button>
-            <button className={contentType === 'tv' ? 'active' : ''} onClick={() => handleContentTypeChange('tv')} style={contentType === 'tv' ? { color: '#E50914', background: 'transparent' } : {}}>Séries</button>
+            <button className={contentType === 'movie' ? 'active-content-type' : ''} onClick={() => handleContentTypeChange('movie')}>Filmes</button>
+            <button className={contentType === 'tv' ? 'active-content-type' : ''} onClick={() => handleContentTypeChange('tv')}>Séries</button>
           </div>
           <select
             name='genre'
@@ -150,12 +150,11 @@ const Home = () => {
         <div className='content-container'>
           {content.length > 0 && content.map((item) => <ContentCard key={item.id} content={item} contentType={item.contentType} />)}
         </div>
-        {content.length > 0 && <button type='button' title='carregar' onClick={loadMoreContent}>Carregar mais<BiDownArrow /></button>}
+        {content.length > 0 && <button type='button' title='carregar' className='carregar-mais' onClick={loadMoreContent}>Carregar mais<BiDownArrow /></button>}
       </div>
     </div>
   );
-  
-  };
-  
-  export default Home;
-  
+
+};
+
+export default Home;

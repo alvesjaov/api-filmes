@@ -90,7 +90,7 @@ const Search = () => {
   } else if (content.length > 0) {
     titleText = 'Resultados para: ';
   } else {
-    titleText = 'Nenhum resultados para: ';
+    titleText = 'Nenhum resultado para: ';
   }
 
   return (
@@ -108,7 +108,7 @@ const Search = () => {
           {content.length > 0 &&
             content.map((item) => <MoviesCard key={item.id} content={item} contentType={item.contentType} />)}
         </div>
-        {content.length > 0 && <button type='button' title='carregar' onClick={loadMoreContent}>Carregar mais<BiDownArrow /></button>}
+        {content.length > 0 && <button type='button' title='carregar' className='carregar-mais' onClick={loadMoreContent}>Carregar mais<BiDownArrow /></button>}
       </div>
     </div>
   )

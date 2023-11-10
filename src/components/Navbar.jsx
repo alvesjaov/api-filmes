@@ -23,19 +23,19 @@ function Navbar() {
             <nav id="navbar">
                 <h2>
                     <Link to="/">
-                        <img src={Stars} alt="Logo" className='bibi-stars' />Space+
+                        <img src={Stars} alt="Logo" className='bibi-stars'/>Space+
                     </Link>
                 </h2>
                 <div className='form-container'>
-                    <div className='on-submit' onSubmit={handleSubmit}>
+                    <form className='on-submit' onSubmit={handleSubmit}>
                         <div className="input-container">
-                            <input type="text" placeholder="Pesquise um filme ou série"
+                             <input type="text" placeholder="Pesquise um filme ou série"
                                 onChange={(e) => setSearch(e.target.value)}
                                 value={search}
                                 name="movieSearch"  
                             />
                         </div>
-                    </div>
+                    </form>
                     <div className='button'>
                         <button type="submit" title='buscar' onClick={handleSubmit}>
                             <BiSearchAlt2 />

@@ -4,7 +4,6 @@ import defaultImage from '../../assets/img/Placeholder.svg'; // Importa a imagem
 
 const imageUrl = import.meta.env.VITE_IMG;
 const notImg = defaultImage;
-
 const ContentCard = ({ content, showLink = true }) => {
     if (!content) {
         return null; // or render some fallback UI
@@ -25,7 +24,7 @@ const ContentCard = ({ content, showLink = true }) => {
                     <p>
                         <FaStar /> {content?.vote_average?.toFixed(1)}
                     </p>
-                    <a href={detailsLink}>Ver detalhes</a>
+                    <a className='details' href={detailsLink}>Ver detalhes</a>
                 </>
             )}
         </div>
