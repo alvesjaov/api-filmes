@@ -11,7 +11,7 @@ function Navbar() {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (!search) return;
+        if (!search?.trim()) return;
         navigate(`/search?q=${search}`);
         setTimeout(() => {
             setSearch('');
