@@ -19,6 +19,7 @@ a {
     font-weight: 500;
 }
 
+
 body::-webkit-scrollbar {
     width: 5px;
     /* width de toda a barra de rolagem */
@@ -52,4 +53,12 @@ select::-webkit-scrollbar-thumb {
     border-radius: 20px;
     border: 20px solid transparent;
     height: 4px;
+}
+
+select option slot{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    padding: 1rem 0;
 }

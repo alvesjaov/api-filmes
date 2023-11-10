@@ -1,7 +1,7 @@
 .container .title {
-    font-size: 3rem;
+    font-size: 2.6rem;
     font-weight: 700;
-    margin-top: 1rem; 
+    margin-top: 1rem;
     color: #fff;
     text-align: center;
     text-transform: uppercase;
@@ -15,10 +15,11 @@
     justify-content: center;
     align-items: center;
     margin-bottom: 2rem;
+    width: 40%;
 }
 
 .container .title-container .toggle,
-div.toggle-search{
+div.toggle-search {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -28,12 +29,12 @@ div.toggle-search{
 }
 
 .container select {
-    background-color: #111111;
+    background-color: #141414;
     color: #ffffff;
     border: 1px solid #ffffff;
     border-radius: 10px;
     padding: .8rem;
-    width: 50vw;
+    width: 100%;
     font-size: larger;
     cursor: pointer;
     margin-top: .5rem;
@@ -48,7 +49,7 @@ div.toggle-search{
     display: flex;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    padding: 2rem;
+    padding: 1rem;
     margin: 1rem;
 }
 
@@ -105,7 +106,7 @@ img {
     border-radius: 10px;
 }
 
-.content-container div a {
+.content-container .details {
     padding: .5rem;
     background-color: #E50914;
     color: #ffffff;
@@ -117,12 +118,6 @@ img {
     outline: none;
 }
 
-.content-container div a:hover,
-.content-container div a:focus {
-    background-color: transparent;
-    color: #E50914;
-}
-
 .container .content {
     display: flex;
     flex-direction: column;
@@ -131,7 +126,7 @@ img {
 }
 
 .container button,
-.toggle-search button {
+button.active-content-type {
     color: #ffffff;
     background-color: #E50914;
     border: #E50914 2px solid;
@@ -139,9 +134,8 @@ img {
     transition: 0.5s;
     font-weight: 700;
     font-size: 1.4rem;
-    width: 50%;
     padding: .5rem 1.2rem;
-    margin-top: .5rem ;
+    margin-top: .5rem;
     cursor: pointer;
     text-transform: uppercase;
     border-radius: 18px;
@@ -150,17 +144,28 @@ img {
     align-items: center;
 }
 
+button.carregar-mais {
+    width: 20%;
+    margin-bottom: 2rem;
+}
+
 .container button svg {
     font-size: 1.5rem;
 }
 
-.container button:hover,
-.container button:focus {
+button.active-content-type:hover,
+button.active-content-type:focus {
     color: #E50914;
     background-color: transparent;
 }
 
-.container .toggle-search button:active{
+button.active-content-type {
+    color: #E50914;
+    background: transparent;
+}
+
+button.carregar-mais:hover,
+.details:hover {
     color: #E50914;
     background-color: transparent;
 }
@@ -181,8 +186,14 @@ img {
         width: 85%;
     }
 
+    .container .title-container .toggle,
+    div.toggle-search {
+        margin-top: 1rem;
+    }
+
     .container select {
-        width: 100%;
+        width: 95%;
+        margin-top: 2rem;
     }
 
     .content-container {
@@ -201,5 +212,10 @@ img {
 
     .container button svg {
         font-size: 1.1rem;
+    }
+
+    button.carregar-mais {
+        width: 60%;
+        margin-bottom: 2rem;
     }
 }
